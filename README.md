@@ -58,7 +58,8 @@ travel-agent/
 
 mermaid
 flowchart TD
-    A[You type: "Weather in Paris?"] --> B[agent.py]
+
+A[You type: "Weather in Paris?"] --> B[agent.py]
 
 B --> C[Send prompt + tool schema to Groq<br>model = llama-3.1-8b-instant]
 
@@ -103,6 +104,7 @@ Geocoding     : Nominatim (OpenStreetMap)
 HTTP client   : requests (in main.py) + fastmcp Client (in weather_client.py)
 
 Environment   : python-dotenv + GROQ_API_KEY
+
 
 
 
