@@ -93,10 +93,16 @@ Q --> R[You see: "In Paris right now it's 14°C, partly cloudy..."]
 
 
 LLM           : Groq API (Llama 3.1 8B Instruct)
+
 Tool protocol : FastMCP (lightweight local tool server)
+
 Weather       : Open-Meteo (free, excellent, no API key)
+
 Geocoding     : Nominatim (OpenStreetMap)
+
 HTTP client   : requests (in main.py) + fastmcp Client (in weather_client.py)
+
 Environment   : python-dotenv + GROQ_API_KEY
+
 
 
