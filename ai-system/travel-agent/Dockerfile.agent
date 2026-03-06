@@ -1,0 +1,22 @@
+# travel-agent/Dockerfile.agent
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy and install dependencies first (better caching)
+COPY src/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the actual application code
+COPY src/agent.py .
+COPY src/weather_client.py .
+
+# Make sure .env is NOT copied (we pass secrets at runtime)
+# ENV variables can be set when running the container
+
+# Run in unbuffered mode so logs come through immediately
+ENV PYTHONUNBUFFERED=1
+
+# Default command: run the interactive agent
+CMD ["python", "agent.py"]
