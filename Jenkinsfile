@@ -1,7 +1,7 @@
 pipeline {
 agent any
 
-```
+
 stages {
 
     stage('Clone Repository') {
@@ -24,11 +24,11 @@ stages {
 
     stage('Test Stage') {
         steps {
-            echo "Running tests..."
+            echo 'Running tests...'
         }
     }
 
 }
-```
+
 
 }
