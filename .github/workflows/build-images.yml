@@ -1,0 +1,21 @@
+name: Build Multiple Images
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build travel-agent image
+        run: docker build -t travel-agent ./travel-agent
+
+      - name: Build weather-mcp image
+        run: docker build -t weather-mcp ./weather-mcp
