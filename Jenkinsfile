@@ -1,42 +1,11 @@
-// // pipeline {
-// // agent any
-
-
-// // stages {
-
-// //     stage('Clone Repository') {
-// //         steps {
-// //             git branch: 'main', url: 'https://github.com/Gayathrijayaprakash2001/weather-client-server.git'
-// //         }
-// //     }
-
-// //     stage('Build travel-agent image') {
-// //         steps {
-// //             bat 'docker build -t travel-agent -f travel-agent/Dockerfile.agent ./travel-agent'
-// //         }
-// //     }
-
-// //     stage('Build weather-mcp image') {
-// //         steps {
-// //             bat 'docker build -t weather-mcp -f weather-mcp/Dockerfile ./weather-mcp'
-// //         }
-// //     }
-
-// //     stage('Test Stage') {
-// //         steps {
-// //             echo 'Running tests...'
-// //         }
-// //     }
-
-// // }
-
-
-// // }
 // pipeline {
 //     agent any
 
-//     stages {
+//     triggers {
+//         githubPush()
+//     }
 
+//     stages {
 //         stage('Clone Repository') {
 //             steps {
 //                 git 'https://github.com/Gayathrijayaprakash2001/weather-client-server.git'
@@ -70,18 +39,14 @@
 //     }
 // }
 
-
 pipeline {
     agent any
 
-    triggers {
-        githubPush()
-    }
-
     stages {
+
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Gayathrijayaprakash2001/weather-client-server.git'
+                git branch: 'main', url: 'https://github.com/Gayathrijayaprakash2001/weather-client-server.git'
             }
         }
 
@@ -93,7 +58,7 @@ pipeline {
 
         stage('Build weather-mcp image') {
             steps {
-                bat 'docker build -t weather-mcp -f weather-mcp/Dockerfile ./weather-mcp'
+                bat 'docker build -t weather-mcp ./weather-mcp'
             }
         }
 
