@@ -1,3 +1,25 @@
+# name: Build Multiple Images
+
+# on:
+#   push:
+#     branches: [ main ]
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       - name: Build travel-agent image
+#         run: docker build -t travel-agent ./travel-agent
+
+#       - name: Build weather-mcp image
+#         run: docker build -t weather-mcp ./weather-mcp
+
 name: Build Multiple Images
 
 on:
@@ -12,10 +34,10 @@ jobs:
     steps:
 
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build travel-agent image
-        run: docker build -t travel-agent ./travel-agent
+        run: docker build -t travel-agent -f travel-agent/Dockerfile.agent ./travel-agent
 
       - name: Build weather-mcp image
         run: docker build -t weather-mcp ./weather-mcp
